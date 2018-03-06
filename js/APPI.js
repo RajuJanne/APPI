@@ -23,17 +23,6 @@ let funktiot = [
   },function() { // mielenhallintakakkara
   },function() { // hans
   },function() { // akku
-    navigator.getBattery().then(function(akku) {
-      function haeTaso(){
-        let akunTaso = akku.level * 100;
-        return akunTaso;
-      }
-      akku.addEventListener('levelchange', function() {
-        haeTaso();
-      });
-    });
-    APPI.luoPopup("akku");
-    APPI.taytaPopup("<p>Ei toimi akkuleikit :(</p>");
   },function() { // miinaharava
   },function() { // gentoo
   },function() { // kärpät
@@ -81,3 +70,12 @@ let APPI = {
   },
   komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter']
 }
+navigator.getBattery().then(function(battery) {
+  APPI.poistaPopup();
+  APPI.luoPopup("akkuTaso");
+  let taso = battery.level;
+  battery.onlevelchange = function() {
+    taso = this.level;
+  };
+  APPI.taytaPopup(`${taso}`)
+});
