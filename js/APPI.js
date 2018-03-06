@@ -23,8 +23,8 @@ let funktiot = [
   },function() { // mielenhallintakakkara
   },function() { // hans
   },function() { // akku
-    APPI.luoPopup("AkkuTesti");
-    APPI.taytaPopup(`<p>Akun taso on: ${taso}`);
+    APPI.luoPopup("akku");
+    APPI.taytaPopup(`<p>Akun taso on: ${$("#piilo").text()}`);
   },function() { // miinaharava
   },function() { // gentoo
   },function() { // kärpät
@@ -94,9 +94,7 @@ let APPI = {
 //   // APPI.taytaPopup(`${taso}`)
 // });
 function updateBatteryStatus(battery) {
-  document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
-  document.querySelector('#level').textContent = battery.level;
-  document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
+  $("#piilo").append(battery.level);
 }
 
 navigator.getBattery().then(function(battery) {
