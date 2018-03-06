@@ -33,7 +33,7 @@ let funktiot = [
   },function () { // peter
     APPI.luoPopup("ounou");
     APPI.taytaPopup("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
-    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
+    APPI.luoNappi("😂", "😂", "APPI.poistaPopup()"); // 😂
   }
 ]
 $(document).ready(function(){
