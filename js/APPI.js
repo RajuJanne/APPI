@@ -43,6 +43,14 @@ $(document).ready(function(){
       }
     }
   });
+  $('.APPI-nappi').click(function(){
+    APPI.poistaPopup();
+    let i = APPI.komennot.indexOf($('.APPI-syote').val());
+    if (i > -1) {
+      funktiot[i]();
+      $('.APPI-syote').val("");
+    }
+  });
 });
 let APPI = {
   luoPopup: function(v) {
