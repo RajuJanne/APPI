@@ -23,13 +23,17 @@ let funktiot = [
   },function() { // mielenhallintakakkara
   },function() { // hans
   },function() { // akku
-    let akku = navigator.battery || navigator.webkitBattery;
-    if (akku) {
-      console.log(akku);
-    } else {
-      APPI.luoPopup("akku");
-      APPI.taytaPopup("<p>Ei toimi akkuleikit :(</p>");
-    }
+    navigator.getBattery().then(function(akku) {
+      function haeTaso(){
+        let akunTaso = akku.level * 100;
+        return akunTaso;
+      }
+      akku.addEventListener('levelchange', function() {
+        haeTaso();
+      });
+    });
+    APPI.luoPopup("akku");
+    APPI.taytaPopup("<p>Ei toimi akkuleikit :(</p>");
   },function() { // miinaharava
   },function() { // gentoo
   },function() { // kärpät
