@@ -1,3 +1,51 @@
 body {
   font-family: 'Coiny', cursive;
 }
+.popup {
+  position: relative;
+  margin-top: 10px;
+  padding: 5px;
+}
+.google {
+  background: green;
+  width: 250px;
+}
+.list {
+  background: yellow;
+  width: 180px;
+}
+.janne {
+  /* background-image: url('https://i.imgur.com/Gj5xwVp.jpg'); */
+  background-image: url('../images/janne.jpg');
+
+  background-size: cover;
+  height: 600px;
+  width: 350px;
+}
+.ounou {
+  background-image: url('../images/isä poika ja pyhä responsiivisuus.png');
+  background-size: cover;
+  height: 600px;
+  width: 350px;
+}
+.respo {
+  background: cyan;
+  width: 500px;
+}
+.painajanne {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.gKyllä {
+  padding-top: 5px
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+.gEi {
+  padding-top: 5px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
