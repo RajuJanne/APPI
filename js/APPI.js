@@ -10,18 +10,26 @@ let funktiot = [
     APPI.luoPopup("google");
     APPI.taytaPopup("<p>Siirrytäänkö Googleen?</p>");
     APPI.luoNappi("gKyllä", "Kyllä", "window.location = 'https://google.com'");
-    APPI.luoNappi("gEi", "Palaa", "APPI.poistaPopup()")
+    APPI.luoNappi("gEi", "Palaa", "APPI.poistaPopup()");
   },function() { // janne
     APPI.luoPopup("janne");
-    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()")
+    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
   },function() { // responsiivinen
     APPI.luoPopup("respo");
     APPI.taytaPopup("<p>Tää oli oikeesti ihan saatanan hauska kurssi, en ollu koskaan ennen koskenu mihinkään css:ää korkeempiin voimiin selaimissa. Kaikki tää kamaluus on siis tään kurssin innoittamana opittua >:3</p>");
-    APPI.taytaPopup('<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FStaartOy%2Fvideos%2F10154505275659376%2F&show_text=0&width=476" class="nörttinurkka" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe><br />');
+    APPI.taytaPopup('<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FStaartOy%2Fvideos%2F10154505275659376%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe><br />');
+    APPI.taytaPopup("<p>PS. Toivottavasti maistuu tämä responsiivisuus.</p>")
     APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
   },function() { // mielenhallintakakkara
   },function() { // hans
   },function() { // akku
+    let akku = navigator.battery || navigator.webkitBattery;
+    if (akku) {
+      console.log(akku);
+    } else {
+      APPI.luoPopup("akku");
+      APPI.taytaPopup("<p>Ei toimi akkuleikit :(</p>");
+    }
   },function() { // miinaharava
   },function() { // gentoo
   },function() { // kärpät

@@ -2,11 +2,11 @@ body {
   font-family: 'Coiny', cursive;
 }
 .popup {
-  position: relative;
   margin-top: 10px;
   padding: 5px;
 }
 .google {
+  position: relative;
   background: green;
   width: 250px;
 }
@@ -29,6 +29,9 @@ body {
   width: 350px;
 }
 .respo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
   background: cyan;
   width: 477px;
 }
