@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log("Valmis.");
   $('.APPI-nappi').click(function (){
     APPI.poistaPopup();
     /* Tästä eteenpäin kannattaa pitää silmät kiinni jos on alaikäinen.
@@ -11,7 +10,7 @@ $(document).ready(function(){
     }
   });
   $(document).keypress(function (e){
-    if (e.which == 13) {
+    if (e.which === 13) {
       APPI.poistaPopup();
       let likainenTemppu = APPI.komennot.indexOf($('.APPI-syote').val());
       $('.APPI-syote').val("");
@@ -28,8 +27,10 @@ var APPI = {
     // listataa kaikki
     APPI.luoPopup("list");
     for (var i = 0; i < APPI.komennot.length; i++) {
-      $('.popup').append(APPI.komennot[i] + "<br/>");
+      // $('.popup').append(APPI.komennot[i] + "<br/>");
+      APPI.taytaPopup(APPI.komennot[i] + "<br />");
     }
+    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
   },
   f1: function() {
     // google
@@ -41,12 +42,12 @@ var APPI = {
   f2: function() {
     // janne
     APPI.luoPopup("janne");
-    APPI.luoNappi("painajanne", "palaa", "APPI.poistaPopup()")
+    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()")
   },
   f3: function() {
     // responsiivinen
     APPI.luoPopup("respo");
-    $('.popup').append("<p>Tää oli oikeesti ihan saatanan hauska kurssi, en ollu koskaan ennen koskenu mihinkään css:ää korkeempiin voimiin selaimissa. Kaikki tää kamaluus on siis tään kurssin innoittamana opittua >:3</p>");
+    APPI.taytaPopup("<p>Tää oli oikeesti ihan saatanan hauska kurssi, en ollu koskaan ennen koskenu mihinkään css:ää korkeempiin voimiin selaimissa. Kaikki tää kamaluus on siis tään kurssin innoittamana opittua >:3</p>");
   },
   f4: function() {
     // mielenhallintakakkara
@@ -70,12 +71,11 @@ var APPI = {
   f10: function () {
     // peter
     APPI.luoPopup("ounou");
-    $('.popup').append("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
-
+    APPI.taytaPopup("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
   },
   luoPopup: function(v) {
-    let popupParent = `<div class="popup ${v}"></div>`;
-    $('.APPI-inner').append(popupParent);
+    let popUp = `<div class="popup ${v}"></div>`;
+    $('.APPI-inner').append(popUp);
   },
   poistaPopup: function() {
     $('.popup').remove();
