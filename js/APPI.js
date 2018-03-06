@@ -34,7 +34,7 @@ let funktiot = [
 ]
 $(document).ready(function(){
   $(document).keypress(function (e){
-    if (e.which === 13) {
+    if (e.which === 13) { /* Laitetaan homma toimimaan entterillä */
       APPI.poistaPopup();
       let i = APPI.komennot.indexOf($('.APPI-syote').val());
       if (i > -1) {
@@ -44,7 +44,7 @@ $(document).ready(function(){
     }
   });
 });
-var APPI = {
+let APPI = {
   luoPopup: function(v) {
     let popUp = `<div class="popup ${v}"></div>`;
     $('.APPI-inner').append(popUp);
