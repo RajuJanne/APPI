@@ -23,6 +23,8 @@ let funktiot = [
   },function() { // mielenhallintakakkara
   },function() { // hans
   },function() { // akku
+    APPI.luoPopup("AkkuTesti");
+    APPI.taytaPopup(`<p>Akun taso on: ${taso}`);
   },function() { // miinaharava
   },function() { // gentoo
   },function() { // kärpät
@@ -58,6 +60,13 @@ let APPI = {
     let popUp = `<div class="popup ${v}"></div>`;
     $('.APPI-inner').append(popUp);
   },
+  onkoAkkuAuki: function() {
+    if ($('.AkkuTesti')[0]) {
+      return true;
+    } else {
+      return false;
+    }
+  },
   poistaPopup: function() {
     $('.popup').remove();
     $('.APPI-syote').focus(); /* Heitetään tähtäin takaisin hattuun */
@@ -70,12 +79,40 @@ let APPI = {
   },
   komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter']
 }
+// navigator.getBattery().then(function(battery) {
+//   // APPI.poistaPopup();
+//   // APPI.luoPopup("akkuTaso");
+//   // let taso = battery.level;
+//   // battery.onlevelchange = function() {
+//   //   taso = this.level;
+//   // };
+//   battery.onlevelchange = function() {
+//     if (APPI.onkoAkkuAuki == true) {
+//       funktiot[6](this.level);
+//     }
+//   }
+//   // APPI.taytaPopup(`${taso}`)
+// });
+function updateBatteryStatus(battery) {
+  document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
+  document.querySelector('#level').textContent = battery.level;
+  document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
+}
+
 navigator.getBattery().then(function(battery) {
-  APPI.poistaPopup();
-  APPI.luoPopup("akkuTaso");
-  let taso = battery.level;
-  battery.onlevelchange = function() {
-    taso = this.level;
+  // Update the battery status initially when the promise resolves ...
+  updateBatteryStatus(battery);
+
+  // .. and for any subsequent updates.
+  battery.onchargingchange = function () {
+    updateBatteryStatus(battery);
   };
-  APPI.taytaPopup(`${taso}`)
+
+  battery.onlevelchange = function () {
+    updateBatteryStatus(battery);
+  };
+
+  battery.ondischargingtimechange = function () {
+    updateBatteryStatus(battery);
+  };
 });
