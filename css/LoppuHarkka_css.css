@@ -30,7 +30,10 @@ body {
 }
 .respo {
   background: cyan;
-  width: 500px;
+  width: 477px;
+}
+.nörttinurkka {
+  margin-bottom: 15px;
 }
 .oikAla {
   position: absolute;
@@ -38,13 +41,13 @@ body {
   right: 5px;
 }
 .gKyllä {
-  padding-top: 5px
+  margin-top: 3px;
   position: absolute;
   bottom: 5px;
   left: 5px;
 }
 .gEi {
-  padding-top: 5px;
+  margin-top: 3px;
   position: absolute;
   bottom: 5px;
   right: 5px;
