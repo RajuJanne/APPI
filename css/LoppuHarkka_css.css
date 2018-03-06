@@ -39,7 +39,7 @@ body {
   margin-bottom: 15px;
 }
 .oikAla {
-  position: absolute;
+  position: relative;
   bottom: 5px;
   right: 5px;
 }

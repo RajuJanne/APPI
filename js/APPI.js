@@ -1,3 +1,4 @@
+"use strict";
 let funktiot = [
   function() { // listataa kaikki
     APPI.luoPopup("list");
@@ -24,7 +25,7 @@ let funktiot = [
   },function() { // hans
   },function() { // akku
     APPI.luoPopup("akku");
-    APPI.taytaPopup(`<p>Akun taso on: ${$("#piilo").text()}`);
+    APPI.taytaPopup(`<p>Akun taso on: ${100 * parseFloat($("#piilo").text())}%`);
   },function() { // miinaharava
   },function() { // gentoo
   },function() { // kärpät
@@ -79,38 +80,12 @@ let APPI = {
   },
   komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter']
 }
-// navigator.getBattery().then(function(battery) {
-//   // APPI.poistaPopup();
-//   // APPI.luoPopup("akkuTaso");
-//   // let taso = battery.level;
-//   // battery.onlevelchange = function() {
-//   //   taso = this.level;
-//   // };
-//   battery.onlevelchange = function() {
-//     if (APPI.onkoAkkuAuki == true) {
-//       funktiot[6](this.level);
-//     }
-//   }
-//   // APPI.taytaPopup(`${taso}`)
-// });
-function updateBatteryStatus(battery) {
-  $("#piilo").append(battery.level);
+function paivitaAkku(akku) {
+  $("#piilo").append(akku.level);
 }
-
-navigator.getBattery().then(function(battery) {
-  // Update the battery status initially when the promise resolves ...
-  updateBatteryStatus(battery);
-
-  // .. and for any subsequent updates.
-  battery.onchargingchange = function () {
-    updateBatteryStatus(battery);
-  };
-
-  battery.onlevelchange = function () {
-    updateBatteryStatus(battery);
-  };
-
-  battery.ondischargingtimechange = function () {
-    updateBatteryStatus(battery);
+navigator.getBattery().then(function(akku) {
+  paivitaAkku(akku);
+  akku.onlevelchange = function () {
+    paivitaAkku(akku);
   };
 });
