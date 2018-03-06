@@ -1,5 +1,5 @@
 "use strict";
-let funktiot = [
+let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimelle niin on mukava servata.
   function() { // listataa kaikki
     APPI.luoPopup("list");
     for (var i = 0; i < APPI.komennot.length; i++) {
@@ -10,7 +10,7 @@ let funktiot = [
   },function() { // google
     APPI.luoPopup("google");
     APPI.taytaPopup("<p>Siirrytäänkö Googleen?</p>");
-    APPI.luoNappi("gKyllä", "Kyllä", "window.location = 'https://google.com'");
+    APPI.luoNappi("gKyllä", "Kyllä", "window.location=`https://google.com`");
     APPI.luoNappi("gEi", "Palaa", "APPI.poistaPopup()");
   },function() { // janne
     APPI.luoPopup("janne");
@@ -21,13 +21,13 @@ let funktiot = [
     APPI.taytaPopup('<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FStaartOy%2Fvideos%2F10154505275659376%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe><br />');
     APPI.taytaPopup("<p>PS. Toivottavasti maistuu tämä responsiivisuus.</p>")
     APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
-  },function() { // mielenhallintakakkara
-  },function() { // hans
+  },function() { console.log("Not implemented lol!");// mielenhallintakakkara
+  },function() { console.log("Not implemented lol!");// hans
   },function() { // akku
     APPI.luoPopup("akku");
-    APPI.taytaPopup(`<p>Akun taso on: ${100 * parseFloat($("#piilo").text())}%`);
-  },function() { // miinaharava
-  },function() { // gentoo
+    APPI.taytaPopup("<p>Akun taso on: "+(100 * parseFloat($('#piilo').text()))+"%");
+  },function() { console.log("Not implemented lol!");// miinaharava
+  },function() { console.log("Not implemented lol!");// gentoo
   },function() { // kärpät
     window.close();
   },function () { // peter
@@ -36,56 +36,64 @@ let funktiot = [
     APPI.luoNappi("😂", "😂", "APPI.poistaPopup()"); // 😂
   }
 ]
-$(document).ready(function(){
-  $(document).keypress(function (e){
-    if (e.which === 13) { /* Laitetaan homma toimimaan entterillä */
-      APPI.poistaPopup();
-      let i = APPI.komennot.indexOf($('.APPI-syote').val());
-      if (i > -1) {
-        funktiot[i]();
-        $('.APPI-syote').val("");
-      }
-    }
-  });
-  $('.APPI-nappi').click(function(){
-    APPI.poistaPopup();
-    let i = APPI.komennot.indexOf($('.APPI-syote').val());
-    if (i > -1) {
-      funktiot[i]();
-      $('.APPI-syote').val("");
-    }
-  });
-});
-let APPI = {
+let APPI = { // jannen oma objekti
   luoPopup: function(v) {
-    let popUp = `<div class="popup ${v}"></div>`;
-    $('.APPI-inner').append(popUp);
+    let popUp = "<div class='popup "+v+"'></div>";
+    $(".APPI-inner").append(popUp);
   },
   onkoAkkuAuki: function() {
-    if ($('.AkkuTesti')[0]) {
+    if ($(".AkkuTesti")[0]) {
       return true;
     } else {
       return false;
     }
   },
   poistaPopup: function() {
-    $('.popup').remove();
-    $('.APPI-syote').focus(); /* Heitetään tähtäin takaisin hattuun */
+    $(".popup").remove();
+    $(".APPI-syote").focus(); /* Heitetään tähtäin takaisin hattuun */
   },
   taytaPopup: function(a) {
-    $('.popup').append(a);
+    $(".popup").append(a);
   },
   luoNappi: function(a, b, c) {
-    $('.popup').append(`<input type="button" class="${a}" value="${b}" onclick="${c}" />`);
+    $(".popup").append("<input type='button' class='"+a+"' value='"+b+"' onclick='"+c+"' />");
   },
-  komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter']
+  paivitaAkku: function(akku) {
+    $("#piilo").append(akku.level);
+  },
+  putsaa: function() {
+    $(".APPI-syote").val("");
+  },
+  komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter'],
 }
-function paivitaAkku(akku) {
-  $("#piilo").append(akku.level);
-}
+// tätä en osannut käsitellä APPIn sisällä :(
 navigator.getBattery().then(function(akku) {
-  paivitaAkku(akku);
+  APPI.paivitaAkku(akku);
   akku.onlevelchange = function () {
-    paivitaAkku(akku);
+    APPI.paivitaAkku(akku);
   };
+});
+$(document).ready(function(){
+  $(document).keypress(function (e){
+    if (e.which === 13) { /* Laitetaan homma toimimaan entterillä */
+      APPI.poistaPopup();
+      let i = APPI.komennot.indexOf($(".APPI-syote").val());
+      if (i > -1) {
+        APPI.putsaa();
+        funktiot[i]();
+      } else {
+        APPI.putsaa();
+      }
+    }
+  });
+  $(".APPI-nappi").click(function(){
+    APPI.poistaPopup();
+    let i = APPI.komennot.indexOf($(".APPI-syote").val());
+    if (i > -1) {
+      APPI.putsaa();
+      funktiot[i]();
+    } else {
+      APPI.putsaa();
+    }
+  });
 });
