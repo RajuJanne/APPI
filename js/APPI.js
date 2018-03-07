@@ -25,7 +25,11 @@ let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimell
   },function() { console.log("Not implemented lol!");// hans
   },function() { // akku
     APPI.luoPopup("akku");
-    APPI.taytaPopup("<p>Akun taso on: "+(100 * parseFloat($('#piilo').text()))+"%");
+    if (!APPI.toimiikoAkku() === false) {
+      APPI.taytaPopup("<p>Akun taso on: " + APPI.toimiikoAkku() * 100 +"%</p>");
+    } else {
+      APPI.taytaPopup("<p>Valitettavasti toiminto ei tue  selaintasi.</p>");
+    }
   },function() { console.log("Not implemented lol!");// miinaharava
   },function() { console.log("Not implemented lol!");// gentoo
   },function() { // kärpät
@@ -41,9 +45,10 @@ let APPI = { // jannen oma objekti
     let popUp = "<div class='popup "+v+"'></div>";
     $(".APPI-inner").append(popUp);
   },
-  onkoAkkuAuki: function() {
-    if ($(".AkkuTesti")[0]) {
-      return true;
+  toimiikoAkku: function() {
+    let taso = parseFloat($("#piilo").text());
+    if (taso > 0) {
+      return taso;
     } else {
       return false;
     }
@@ -59,8 +64,13 @@ let APPI = { // jannen oma objekti
     $(".popup").append("<input type='button' class='"+a+"' value='"+b+"' onclick='"+c+"' />");
   },
   paivitaAkku: function(akku) {
-    $("#piilo").empty();
-    $("#piilo").append(akku.level);
+    if (!akku === false) {
+      $("#piilo").empty();
+      $("#piilo").append(akku.level);
+    } else {
+      $("#piilo").empty();
+      $("#piilo").append(-1);
+    }
   },
   putsaa: function() {
     $(".APPI-syote").val("");
@@ -68,12 +78,17 @@ let APPI = { // jannen oma objekti
   komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter'],
 }
 // tätä en osannut käsitellä APPIn sisällä :(
-navigator.getBattery().then(function(akku) {
-  APPI.paivitaAkku(akku);
-  akku.onlevelchange = function () {
+try {
+  navigator.getBattery().then(function(akku) {
     APPI.paivitaAkku(akku);
-  };
-});
+    akku.onlevelchange = function () {
+      APPI.paivitaAkku(akku);
+    };
+  });
+}
+catch (e) {
+  APPI.paivitaAkku(false);
+}
 $(document).ready(function(){
   $(document).keypress(function (e){
     if (e.which === 13) { /* Laitetaan homma toimimaan entterillä */
