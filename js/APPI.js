@@ -24,45 +24,51 @@ let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimell
     APPI.taytaPopup('<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FStaartOy%2Fvideos%2F10154505275659376%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe><br />');
     APPI.taytaPopup("<p>PS. Toivottavasti maistuu tämä “responsiivisuus”.</p>")
     APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
-  },function() { console.log("Not implemented lol!");// mielenhallintakakkara
-},function() {
-  // hans
-  APPI.luoPopup("CantHoldThisHans");
-  setTimeout(function(){ // DRAMATIIKKAA
-    APPI.tuotaHANS();
-  },1000);
-  APPI.luoNappi("HusHans!","Että mitä?","APPI.poistaPopup()");
-},function() {
-  // akku
-  APPI.luoPopup("akku");
-  APPI.alustaAkku(); // Haetaan promise ja odotetaan 300ms sen valmistumista.
-  setTimeout(function(){
-    if (!APPI.toimiikoAkku() === false) {
-      APPI.taytaPopup("<p>Akun taso on: " + APPI.toimiikoAkku() * 100 +"%</p>");
-    } else {
-      APPI.taytaPopup("<p>Valitettavasti toiminto ei tue  selaintasi.</p>");
-    }
-  }, 300);
-},function() {
-  // miinaharava
-  APPI.luoPopup("miinaharava-parent");
-  APPI.taytaPopup("<canvas id='miinakenttä' width='450' height='450'></canvas>");
-  APPI.miinapeli();
-  APPI.luoNappi("suljeMiina","Sulje","APPI.poistaPopup()");
-},function() {
-  // gentoo
-  APPI.luoPopup("gentoo");
-  APPI.taytaPopup("<h1>ASENNA GENTOO<p>");
-  APPI.luoNappi("gentoo1","JOO!","window.location=`https://www.gentoo.org/downloads/`");
-  APPI.luoNappi("gentoo1","todellAKI!","window.location=`https://www.gentoo.org/downloads/`");
-},function() {
-  // kärpät
-  window.close();
-},function () { // peter
-  APPI.luoPopup("ounou");
-  APPI.taytaPopup("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
-  APPI.luoNappi("😂", "😂", "APPI.poistaPopup()"); // 😂
-}
+  },function() {
+    // mielenhallintakakkara
+    APPI.luoPopup("mielenhallintakakkara");
+    APPI.taytaPopup("<h2>Klikkaa kakkaraa!</h2>");
+    APPI.taytaPopup("<img src='https://i.imgur.com/qsFUkTZ.png' />");
+    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
+    APPI.pyoritaKakkaraa();
+  },function() {
+    // hans
+    APPI.luoPopup("CantHoldThisHans");
+    setTimeout(function(){ // DRAMATIIKKAA
+      APPI.tuotaHANS();
+    },1000);
+    APPI.luoNappi("HusHans!","Että mitä?","APPI.poistaPopup()");
+  },function() {
+    // akku
+    APPI.luoPopup("akku");
+    APPI.alustaAkku(); // Haetaan promise ja odotetaan 300ms sen valmistumista.
+    setTimeout(function(){
+      if (!APPI.toimiikoAkku() === false) {
+        APPI.taytaPopup("<p>Akun taso on: " + APPI.toimiikoAkku() * 100 +"%</p>");
+      } else {
+        APPI.taytaPopup("<p>Valitettavasti toiminto ei tue  selaintasi.</p>");
+      }
+    }, 300);
+  },function() {
+    // miinaharava
+    APPI.luoPopup("miinaharava-parent");
+    APPI.taytaPopup("<canvas id='miinakenttä' width='450' height='450'></canvas>");
+    APPI.miinapeli();
+    APPI.luoNappi("suljeMiina","Sulje","APPI.poistaPopup()");
+  },function() {
+    // gentoo
+    APPI.luoPopup("gentoo");
+    APPI.taytaPopup("<h1>ASENNA GENTOO<p>");
+    APPI.luoNappi("gentoo1","JOO!","window.location=`https://www.gentoo.org/downloads/`");
+    APPI.luoNappi("gentoo1","todellAKI!","window.location=`https://www.gentoo.org/downloads/`");
+  },function() {
+    // kärpät
+    window.close();
+  },function () { // peter
+    APPI.luoPopup("ounou");
+    APPI.taytaPopup("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
+    APPI.luoNappi("😂", "😂", "APPI.poistaPopup()"); // 😂
+  }
 ]
 
 let APPI = { // jannen oma objekti
@@ -189,7 +195,21 @@ let APPI = { // jannen oma objekti
   tuotaHANS : function(){
     let hans = $(".Hanscii").text();
     $(".popup").append(hans);
-  }
+  },
+  pyoritaKakkaraa: function() {
+    $(".mielenhallintakakkara").click(function(){
+      if (APPI.kakkaranKulma === 5) { APPI.kakkaranKulma = 0 }
+      $(this).css({
+        "transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
+        "-webkit-transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
+        "-moz-transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
+        "transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
+        "transition": "all 0.8s linear"
+      });
+      APPI.kakkaranKulma++;
+    });
+  },
+  kakkaranKulma : 0
 }
 
 $(document).ready(function(){

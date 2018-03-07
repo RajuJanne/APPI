@@ -11,6 +11,7 @@ body {
   width: 250px;
 }
 .list {
+  position: relative;
   background: yellow;
   width: 180px;
 }
@@ -35,6 +36,11 @@ body {
   position: relative;
   height: 600px;
   width: 350px;
+}
+.mielenhallintakakkara {
+  position: relative;
+  width: 855px;
+  height: 955px;
 }
 .respo {
   position: absolute;
