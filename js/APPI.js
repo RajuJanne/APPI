@@ -59,6 +59,7 @@ let APPI = { // jannen oma objekti
     $(".popup").append("<input type='button' class='"+a+"' value='"+b+"' onclick='"+c+"' />");
   },
   paivitaAkku: function(akku) {
+    $("#piilo").empty();
     $("#piilo").append(akku.level);
   },
   putsaa: function() {
