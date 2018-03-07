@@ -198,18 +198,16 @@ let APPI = { // jannen oma objekti
   },
   pyoritaKakkaraa: function() {
     $(".mielenhallintakakkara").click(function(){
-      if (APPI.kakkaranKulma === 5) { APPI.kakkaranKulma = 0 }
+      let kakkaranKulma = Math.floor(Math.random()*1080);
       $(this).css({
-        "transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
-        "-webkit-transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
-        "-moz-transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
-        "transform": "rotate(" + APPI.kakkaranKulma * 90 +"deg)",
-        "transition": "all 0.8s linear"
+        "transform": "rotate(" + kakkaranKulma +"deg)",
+        "-webkit-transform": "rotate(" + kakkaranKulma +"deg)",
+        "-moz-transform": "rotate(" + kakkaranKulma +"deg)",
+        "transform": "rotate(" + kakkaranKulma +"deg)",
+        "transition": "all 0.6s ease-in-out"
       });
-      APPI.kakkaranKulma++;
     });
-  },
-  kakkaranKulma : 0
+  }
 }
 
 $(document).ready(function(){
