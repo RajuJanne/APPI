@@ -52,7 +52,7 @@ let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimell
   },function() {
     // miinaharava
     APPI.luoPopup("miinaharava-parent");
-    APPI.taytaPopup("<canvas id='miinakenttä' width='450' height='450'></canvas>");
+    APPI.taytaPopup("<canvas id='miinakenttä' width='400' height='400'></canvas>");
     APPI.miinapeli();
     APPI.luoNappi("suljeMiina","Sulje","APPI.poistaPopup()");
   },function() {
@@ -203,7 +203,6 @@ let APPI = { // jannen oma objekti
         "transform": "rotate(" + kakkaranKulma +"deg)",
         "-webkit-transform": "rotate(" + kakkaranKulma +"deg)",
         "-moz-transform": "rotate(" + kakkaranKulma +"deg)",
-        "transform": "rotate(" + kakkaranKulma +"deg)",
         "transition": "all 0.6s ease-in-out"
       });
     });

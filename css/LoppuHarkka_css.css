@@ -59,10 +59,15 @@ body {
 }
 .miinaharava-parent {
   position: relative;
-  height: 450px;
-  width: 450px;
+  height: 430px;
+  width: 400px;
 }
-.uusiPeli{
+.suljeMiina {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.uusiPeli {
   position: absolute;
   bottom: 5px;
   left: 5px;
