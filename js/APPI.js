@@ -52,6 +52,7 @@ let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimell
   },function() {
     // miinaharava
     APPI.luoPopup("miinaharava-parent");
+    APPI.taytaPopup("<img src='images/Cool.png' id='miinaNaama' height='50' width='50'>");
     APPI.taytaPopup("<canvas id='miinakenttä' width='400' height='400'></canvas>");
     APPI.miinapeli();
     APPI.luoNappi("suljeMiina","Sulje","APPI.poistaPopup()");
@@ -154,7 +155,8 @@ let APPI = { // jannen oma objekti
         i++;
       } while (i < 10);
       APPI.gameOver = true;
-      APPI.luoNappi("uusiPeli", "Koita uudelleen", "APPI.miinapeli(),APPI.gameOver = false,APPI.poistaNappi(`.uusiPeli`)");
+      APPI.miinaNaama();
+      APPI.luoNappi("uusiPeli", "Koita uudelleen", "APPI.miinapeli(),APPI.gameOver = false,APPI.poistaNappi(`.uusiPeli`),APPI.miinaNaama()");
     }
     catch (e) {
     }
@@ -177,6 +179,13 @@ let APPI = { // jannen oma objekti
     let klikattuRuutu = Math.floor(coordY/50) * 8 + Math.floor(coordX/50);
     APPI.piirraKlikki(klikattuRuutu);
     return klikattuRuutu;
+  },
+  miinaNaama : function() {
+    if (APPI.gameOver === false) {
+      $("#miinaNaama").attr("src",'images/Cool.png');
+    } else if (APPI.gameOver === true) {
+      $("#miinaNaama").attr("src",'images/Lose.png');
+    }
   },
   gameOver : false,
   alustaAkku : function() {

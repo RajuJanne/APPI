@@ -59,8 +59,19 @@ body {
 }
 .miinaharava-parent {
   position: relative;
-  height: 430px;
+  height: 480px;
   width: 400px;
+  background-color: #c1c1c1;
+}
+#miinakenttä {
+  position: absolute;
+  top: 60px;
+  left: 5px;
+}
+#miinaNaama {
+  position: absolute;
+  top: 5px;
+  left: 180px;
 }
 .suljeMiina {
   position: absolute;
