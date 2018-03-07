@@ -1,7 +1,7 @@
 # APPI
-JavaScript loppuharjoitus.
+##JavaScript loppuharjoitus.
 
-Tehtävänanto
+######Tehtävänanto
   Tehkää sovellus, joka ymmärtää kirjoitusta.
   Sovelluksen tulee ymmärtää vähintään 10
   simppeliä sanaa tai lausetta.
@@ -29,25 +29,25 @@ Tehtävänanto
   
 ____________________________________
 
-Leiska
+######Leiska
   Tekijänä saat itse suunnitella sovelluksen
   ulkoasun.
   
-UI
+######UI
   Ohjelma sisältää input kentän ja napin.
   Ohjelman tulee myös sisältää popup, joka
   hyppää aina tarvittaessa ruudulle(esim.
   Google kysymys).
   
-Sana säilö
+######Sana säilö
   Lisäpisteitä suoritukseen saa sillä, että käyttää
   arraytä tai objektia erillisten muuttujien sijaan.
   Myös sanaa vastaava vastaus kannattaa olla
   objektissa.
   
-Vaatimukset ja rajoitteet
+######Vaatimukset ja rajoitteet
 
-Koodauskieli
+######Koodauskieli
  Javascript puhdas tai
  jQuery ja Javascript sekaisin.
   HUOM. jQuery on ainoa sallittu ulkoinen
@@ -55,22 +55,22 @@ Koodauskieli
   JqueryUI tai vastaavia kirjastoja ei saa tässä
   tehtävässä käyttää.
   
-Saako tehdä ryhmässä?
+######Saako tehdä ryhmässä?
   Ei
   
-Saako googlaa tietoa?
+######Saako googlaa tietoa?
  Saa tietenkin
  
-Saako kopioida koodia muualta?
+######Saako kopioida koodia muualta?
   Pieniä koodinpätkiä voi käyttää. Esim.
   jos jQueryn $(document).ready
   syntaksi on unohtunut sen saa käydä
   kopiomassa muualta.
   
-Pitääkö koodi olla sisennettyä ja luettavaa?
+######Pitääkö koodi olla sisennettyä ja luettavaa?
   Kyllä ja kommentoitua
   
-Vaikuttaako tämä tehtävä arvosanaan?
+######Vaikuttaako tämä tehtävä arvosanaan?
   Kyllä. Tehtävä vastaa koetta ja
   arvosanasi määräytyy 80% tämän
   tehtävän perusteella.
