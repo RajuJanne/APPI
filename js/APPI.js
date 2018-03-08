@@ -4,7 +4,6 @@ let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimell
     // listataa kaikki
     APPI.luoPopup("list");
     for (var i = 0; i < APPI.komennot.length; i++) {
-      // $('.popup').append(APPI.komennot[i] + "<br/>");
       APPI.taytaPopup(APPI.komennot[i] + "<br />");
     }
     APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
