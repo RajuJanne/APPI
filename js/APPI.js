@@ -1,6 +1,7 @@
 "use strict";
 let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimelle niin on mukava servata.
-  function() { // listataa kaikki
+  function() {
+    // listataa kaikki
     APPI.luoPopup("list");
     for (var i = 0; i < APPI.komennot.length; i++) {
       // $('.popup').append(APPI.komennot[i] + "<br/>");
@@ -65,14 +66,16 @@ let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimell
   },function() {
     // kärpät
     window.close();
-  },function () { // peter
+  },function () {
+    // peter
     APPI.luoPopup("ounou");
     APPI.taytaPopup("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
     APPI.luoNappi("😂", "😂", "APPI.poistaPopup()"); // 😂
   }
 ]
 
-let APPI = { // jannen oma objekti
+let APPI = {
+  // jannen oma objekti
   luoPopup: function(v) {
     let popUp = "<div class='popup "+v+"'></div>";
     $(".APPI-inner").append(popUp);
@@ -149,7 +152,7 @@ let APPI = { // jannen oma objekti
       let i = 1;
       let coordY, coordX;
       do {
-        coordY = Math.floor(pommit[i]/8); // tämä on oikein
+        coordY = Math.floor(pommit[i]/8);
         coordX = pommit[i] - coordY*8;
         konteksti.drawImage(kuva,coordX*50,coordY*50);
         i++;
@@ -202,8 +205,7 @@ let APPI = { // jannen oma objekti
     }
   },
   tuotaHANS : function(){
-    let hans = $(".Hanscii").text();
-    $(".popup").append(hans);
+    $(".popup").append($(".Hanscii").text());
   },
   pyoritaKakkaraa: function() {
     $(".mielenhallintakakkara").click(function(){
