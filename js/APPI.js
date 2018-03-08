@@ -113,7 +113,6 @@ let APPI = {
   putsaa: function() {
     $(".APPI-syote").val("");
   },
-  komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter'],
   miinapeli: function() {
     let i = 0, coordX = 0, coordY = 0;
     let canvas = document.getElementById("miinakenttä"), konteksti = canvas.getContext("2d"), kuva = document.getElementById("ruutu");
@@ -190,7 +189,6 @@ let APPI = {
       $("#miinaNaama").attr("src",'images/Lose.png');
     }
   },
-  gameOver : false,
   alustaAkku : function() {
     try {
       navigator.getBattery().then(function(akku) {
@@ -217,7 +215,14 @@ let APPI = {
         "transition": "all 0.6s ease-in-out"
       });
     });
-  }
+  },
+  paskaSyöte: function() {
+    APPI.luoPopup("schaiba");
+    APPI.taytaPopup("<h2>Tuntematon komento</h2><br /><p>Käytä komentoa “listaa kaikki” nähdäksesi komennot.</p>");
+    APPI.luoNappi("oikAla","Selvä!","APPI.poistaPopup()");
+  },
+  komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter'],
+  gameOver : false
 }
 
 $(document).ready(function(){
@@ -229,7 +234,11 @@ $(document).ready(function(){
         APPI.putsaa();
         funktiot[i]();
       } else {
-        APPI.putsaa();
+        if ($(".APPI-syote").val())
+        {
+          APPI.putsaa();
+          APPI.paskaSyöte();
+        }
       }
     }
   });
@@ -240,7 +249,11 @@ $(document).ready(function(){
       APPI.putsaa();
       funktiot[i]();
     } else {
-      APPI.putsaa();
+      if ($(".APPI-syote").val())
+      {
+        APPI.putsaa();
+        APPI.paskaSyöte();
+      }
     }
   });
 });
