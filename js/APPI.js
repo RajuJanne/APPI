@@ -1,80 +1,80 @@
 "use strict";
-let funktiot = [ // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimelle niin on mukava servata.
-  function() {
-    // listataa kaikki
-    APPI.luoPopup("list");
-    for (var i = 0; i < APPI.komennot.length; i++) {
-      APPI.taytaPopup(APPI.komennot[i] + "<br />");
-    }
-    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
-  },function() {
-    // google
-    APPI.luoPopup("google");
-    APPI.taytaPopup("<p>Siirrytäänkö Googleen?</p>");
-    APPI.luoNappi("gKyllä", "Kyllä", "window.location=`https://google.com`");
-    APPI.luoNappi("gEi", "Palaa", "APPI.poistaPopup()");
-  },function() {
-    // janne
-    APPI.luoPopup("janne");
-    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
-  },function() {
-    // responsiivinen
-    APPI.luoPopup("respo");
-    APPI.taytaPopup("<p>Tää oli oikeesti ihan saatanan hauska kurssi, en ollu koskaan ennen koskenu mihinkään css:ää korkeempiin voimiin selaimissa. Kaikki tää kamaluus on siis tään kurssin innoittamana opittua >:3</p>");
-    APPI.taytaPopup('<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FStaartOy%2Fvideos%2F10154505275659376%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe><br />');
-    APPI.taytaPopup("<p>PS. Toivottavasti maistuu tämä “responsiivisuus”.</p>")
-    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
-  },function() {
-    // mielenhallintakakkara
-    APPI.luoPopup("mielenhallintakakkara");
-    APPI.taytaPopup("<h2>Klikkaa kakkaraa!</h2>");
-    APPI.taytaPopup("<img src='https://i.imgur.com/qsFUkTZ.png' />");
-    APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
-    APPI.pyoritaKakkaraa();
-  },function() {
-    // hans
-    APPI.luoPopup("CantHoldThisHans");
-    setTimeout(function(){ // DRAMATIIKKAA
-      APPI.tuotaHANS();
-    },1000);
-    APPI.luoNappi("HusHans!","Että mitä?","APPI.poistaPopup()");
-  },function() {
-    // akku
-    APPI.luoPopup("akku");
-    APPI.alustaAkku(); // Haetaan promise ja odotetaan 300ms sen valmistumista.
-    setTimeout(function(){
-      if (!APPI.toimiikoAkku() === false) {
-        APPI.taytaPopup("<p>Akun taso on: " + APPI.toimiikoAkku() * 100 +"%</p>");
-      } else {
-        APPI.taytaPopup("<p>Valitettavasti toiminto ei tue  selaintasi.</p>");
-      }
-    }, 300);
-  },function() {
-    // miinaharava
-    APPI.luoPopup("miinaharava-parent");
-    APPI.taytaPopup("<img src='images/Cool.png' id='miinaNaama' height='50' width='50'>");
-    APPI.taytaPopup("<canvas id='miinakenttä' width='400' height='400'></canvas>");
-    APPI.miinapeli();
-    APPI.luoNappi("suljeMiina","Sulje","APPI.poistaPopup()");
-  },function() {
-    // gentoo
-    APPI.luoPopup("gentoo");
-    APPI.taytaPopup("<h1>ASENNA GENTOO<p>");
-    APPI.luoNappi("gentoo1","JOO!","window.location=`https://www.gentoo.org/downloads/`");
-    APPI.luoNappi("gentoo1","todellAKI!","window.location=`https://www.gentoo.org/downloads/`");
-  },function() {
-    // kärpät
-    window.close();
-  },function () {
-    // peter
-    APPI.luoPopup("ounou");
-    APPI.taytaPopup("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
-    APPI.luoNappi("😂", "😂", "APPI.poistaPopup()"); // 😂
-  }
-]
-
 let APPI = {
   // jannen oma objekti
+  funktiot : [
+    // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimelle niin on mukava servata.
+    function() {
+      // listataa kaikki
+      APPI.luoPopup("list");
+      for (var i = 0; i < APPI.komennot.length; i++) {
+        APPI.taytaPopup(APPI.komennot[i] + "<br />");
+      }
+      APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
+    },function() {
+      // google
+      APPI.luoPopup("google");
+      APPI.taytaPopup("<p>Siirrytäänkö Googleen?</p>");
+      APPI.luoNappi("gKyllä", "Kyllä", "window.location=`https://google.com`");
+      APPI.luoNappi("gEi", "Palaa", "APPI.poistaPopup()");
+    },function() {
+      // janne
+      APPI.luoPopup("janne");
+      APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
+    },function() {
+      // responsiivinen
+      APPI.luoPopup("respo");
+      APPI.taytaPopup("<p>Tää oli oikeesti ihan saatanan hauska kurssi, en ollu koskaan ennen koskenu mihinkään css:ää korkeempiin voimiin selaimissa. Kaikki tää kamaluus on siis tään kurssin innoittamana opittua >:3</p>");
+      APPI.taytaPopup('<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FStaartOy%2Fvideos%2F10154505275659376%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe><br />');
+      APPI.taytaPopup("<p>PS. Toivottavasti maistuu tämä “responsiivisuus”.</p>")
+      APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
+    },function() {
+      // mielenhallintakakkara
+      APPI.luoPopup("mielenhallintakakkara");
+      APPI.taytaPopup("<h2>Klikkaa kakkaraa!</h2>");
+      APPI.taytaPopup("<img src='https://i.imgur.com/qsFUkTZ.png' />");
+      APPI.luoNappi("oikAla", "palaa", "APPI.poistaPopup()");
+      APPI.pyoritaKakkaraa();
+    },function() {
+      // hans
+      APPI.luoPopup("CantHoldThisHans");
+      setTimeout(function(){ // DRAMATIIKKAA
+        APPI.tuotaHANS();
+      },1000);
+      APPI.luoNappi("HusHans!","Että mitä?","APPI.poistaPopup()");
+    },function() {
+      // akku
+      APPI.luoPopup("akku");
+      APPI.alustaAkku(); // Haetaan promise ja odotetaan 300ms sen valmistumista.
+      setTimeout(function(){
+        if (!APPI.toimiikoAkku() === false) {
+          APPI.taytaPopup("<p>Akun taso on: " + APPI.toimiikoAkku() * 100 +"%</p>");
+        } else {
+          APPI.taytaPopup("<p>Valitettavasti toiminto ei tue  selaintasi.</p>");
+        }
+      }, 300);
+    },function() {
+      // miinaharava
+      APPI.luoPopup("miinaharava-parent");
+      APPI.taytaPopup("<img src='images/Cool.png' id='miinaNaama' height='50' width='50'>");
+      APPI.taytaPopup("<canvas id='miinakenttä' width='400' height='400'></canvas>");
+      APPI.miinapeli();
+      APPI.luoNappi("suljeMiina","Sulje","APPI.poistaPopup()");
+    },function() {
+      // gentoo
+      APPI.luoPopup("gentoo");
+      APPI.taytaPopup("<h1>ASENNA GENTOO<p>");
+      APPI.luoNappi("gentoo1","JOO!","window.location=`https://www.gentoo.org/downloads/`");
+      APPI.luoNappi("gentoo1","todellAKI!","window.location=`https://www.gentoo.org/downloads/`");
+    },function() {
+      // kärpät
+      window.close();
+    },function () {
+      // peter
+      APPI.luoPopup("ounou");
+      APPI.taytaPopup("<p>EI OLLU HYVÄ IDEA</p><p>PS. Eevertti teki kuvam käsintelyt.</p>");
+      APPI.luoNappi("😂", "😂", "APPI.poistaPopup()"); // 😂
+    }
+  ],
   luoPopup: function(v) {
     let popUp = "<div class='popup "+v+"'></div>";
     $(".APPI-inner").append(popUp);
@@ -231,7 +231,7 @@ $(document).ready(function(){
       let i = APPI.komennot.indexOf($(".APPI-syote").val());
       if (i > -1) {
         APPI.putsaa();
-        funktiot[i]();
+        APPI.funktiot[i]();
       } else {
         if ($(".APPI-syote").val())
         {
@@ -246,7 +246,7 @@ $(document).ready(function(){
     let i = APPI.komennot.indexOf($(".APPI-syote").val());
     if (i > -1) {
       APPI.putsaa();
-      funktiot[i]();
+      APPI.funktiot[i]();
     } else {
       if ($(".APPI-syote").val())
       {
