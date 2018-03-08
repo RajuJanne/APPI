@@ -37,6 +37,9 @@ body {
   width: 1540px;
   height: 1765px;
 }
+.Hanscii {
+  font-size: 0px;
+}
 .janne {
   background-image: url('../images/janne.jpg');
   position: relative;
