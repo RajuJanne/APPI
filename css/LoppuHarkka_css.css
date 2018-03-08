@@ -41,14 +41,14 @@ body {
   font-size: 0px;
 }
 .janne {
-  background-image: url('../images/janne.jpg');
+  background-image: url('../images/sensuuri.png');
   position: relative;
   background-size: cover;
   height: 600px;
   width: 350px;
 }
 .ounou {
-  background-image: url('../images/isä poika ja pyhä responsiivisuus.png');
+  background-image: url('../images/sensuuri.png');
   background-size: cover;
   position: relative;
   height: 600px;
