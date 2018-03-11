@@ -1,7 +1,7 @@
 "use strict";
 let APPI = {
   // jannen oma objekti
-  funktiot : [
+  funktiot: [
     // lykkäsin kaikki syötteitä vastaavat funktiot tarjottimelle niin on mukava servata.
     function() {
       // listataa kaikki
@@ -162,7 +162,7 @@ let APPI = {
     catch (e) {
     }
   },
-  piirraKlikki : function(klikattuRuutu) {
+  piirraKlikki: function(klikattuRuutu) {
     let canvas = document.getElementById("miinakenttä"), konteksti = canvas.getContext("2d"), kuva = document.getElementById("pommiklikattu");
     let coordY, coordX;
     coordY = Math.floor(klikattuRuutu / 8);
@@ -173,7 +173,7 @@ let APPI = {
     catch (e) {
     }
   },
-  haeKlikki : function(canvas, event) {
+  haeKlikki: function(canvas, event) {
     let rect = canvas.getBoundingClientRect();
     let coordX = event.clientX - rect.left;
     let coordY = event.clientY - rect.top;
@@ -181,14 +181,14 @@ let APPI = {
     APPI.piirraKlikki(klikattuRuutu);
     return klikattuRuutu;
   },
-  miinaNaama : function() {
+  miinaNaama: function() {
     if (APPI.gameOver === false) {
       $("#miinaNaama").attr("src",'images/Cool.png');
     } else if (APPI.gameOver === true) {
       $("#miinaNaama").attr("src",'images/Lose.png');
     }
   },
-  alustaAkku : function() {
+  alustaAkku: function() {
     try {
       navigator.getBattery().then(function(akku) {
         APPI.paivitaAkku(akku);
@@ -201,7 +201,7 @@ let APPI = {
       APPI.paivitaAkku(false);
     }
   },
-  tuotaHANS : function(){
+  tuotaHANS: function(){
     $(".popup").append($(".Hanscii").text());
   },
   pyoritaKakkaraa: function() {
@@ -221,7 +221,7 @@ let APPI = {
     APPI.luoNappi("oikAla","Selvä!","APPI.poistaPopup()");
   },
   komennot: ['listaa kaikki', 'google', 'janne', 'responsiivinen', 'mielenhallintakakkara', 'hans', 'akku', 'miinaharava', 'gentoo', 'kärpät', 'peter'],
-  gameOver : false
+  gameOver: false
 }
 
 $(document).ready(function(){
